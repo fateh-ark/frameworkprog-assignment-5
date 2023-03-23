@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FrameworkProg5.DetailsPage"
+             xmlns:viewmodel="clr-namespace:FrameworkProg5.ViewModel"
+             x:DataType="viewmodel:PokemonDetailsViewModel">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="*,Auto,*"
+                  RowDefinitions="160,Auto">
+                <BoxView BackgroundColor="{StaticResource Primary}"
+                         Grid.ColumnSpan="3"
+                         HeightRequest="160"
+                         HorizontalOptions="FillAndExpand"/>
+                <Frame Grid.RowSpan="2"
+                       Grid.Column="1"
+                       HeightRequest="160"
+                       WidthRequest="160"
+                       CornerRadius="80"
+                       HorizontalOptions="Center"
+                       IsClippedToBounds="True"
+                       Padding="0"
+                       Margin="0,80,0,0">
+                    <Image Aspect="AspectFill"
+                           MaximumHeightRequest="160"
+                           WidthRequest="160"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="{Binding Pokemon.img}"/>
+                </Frame>
+            </Grid>
+            <VerticalStackLayout HorizontalOptions="Fill">
+                <Label Text="{Binding Pokemon.name}" FontSize="40" FontAttributes="Bold" Style="{StaticResource BaseLabel}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding Pokemon.num}" Style="{StaticResource LargeLabel}" HorizontalTextAlignment="Center"/>
+
+                <Grid HorizontalOptions="Fill"
+                      VerticalOptions="StartAndExpand"
+                      ColumnDefinitions="*,*,*"
+                      RowDefinitions="*,*"
+                      ColumnSpacing="5"
+                      Padding="0,10,10,0">
+                    <Label Text="{Binding Pokemon.height}" Style="{StaticResource MediumLabel}" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="0"/>
+                    <Label Text="{Binding Pokemon.weight}" Style="{StaticResource MediumLabel}" HorizontalTextAlignment="Center" Grid.Column="1" Grid.Row="0"/>
+                    <Label Text="{Binding Pokemon.candy}" Style="{StaticResource MediumLabel}" HorizontalTextAlignment="Center" Grid.Column="2" Grid.Row="0"/>
+
+                    <Label Text="Height" Style="{StaticResource SmallLabel}" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="1"/>
+                    <Label Text="Weight" Style="{StaticResource SmallLabel}" HorizontalTextAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+                    <Label Text="Candy Type" Style="{StaticResource SmallLabel}" HorizontalTextAlignment="Center" Grid.Column="2" Grid.Row="1"/>
+                </Grid>
+
+                <Grid HorizontalOptions="Fill"
+                      VerticalOptions="StartAndExpand"
+                      ColumnDefinitions="*,*,*"
+                      RowDefinitions="*,*"
+                      ColumnSpacing="5"
+                      Padding="0,10,10,0">
+                    <Label Text="{Binding Pokemon.candy_count}" Style="{StaticResource MediumLabel}" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="0"/>
+                    <Label Text="{Binding Pokemon.egg}" Style="{StaticResource MediumLabel}" HorizontalTextAlignment="Center" Grid.Column="1" Grid.Row="0"/>
+                    <Label Text="{Binding Pokemon.spawn_chance}" Style="{StaticResource MediumLabel}" HorizontalTextAlignment="Center" Grid.Column="2" Grid.Row="0"/>
+
+                    <Label Text="Candy Count" Style="{StaticResource SmallLabel}" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="1"/>
+                    <Label Text="Egg" Style="{StaticResource SmallLabel}" HorizontalTextAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+                    <Label Text="Spawn Chance" Style="{StaticResource SmallLabel}" HorizontalTextAlignment="Center" Grid.Column="2" Grid.Row="1"/>
+                </Grid>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

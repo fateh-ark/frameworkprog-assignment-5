@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:FrameworkProg5.Model"
+             xmlns:viewmodel="clr-namespace:FrameworkProg5.ViewModel"
+             x:DataType="viewmodel:PokemonViewModels"
+             Title="{Binding Title}"
+             x:Class="FrameworkProg5.View.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="REFRESH" Command="{Binding GetPokemonCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0">
+        <RefreshView Grid.ColumnSpan="2"
+                     Command="{Binding GetPokemonCommand}"
+                     IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView BackgroundColor="Transparent"
+                        ItemsSource="{Binding Pokemons}"
+                        SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout HorizontalOptions="CenterAndExpand"
+                                         VerticalOptions="CenterAndExpand"
+                                         Spacing="4">
+                        <Image Source="error_pokemon.png"
+                               HeightRequest="200"
+                               WidthRequest="200"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               Aspect="AspectFill"/>
+                        <Label Text="No Pokemon Has Been Displayed. Try Refreshing." Style="{StaticResource MediumLabel}" HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Pokemon">
+                        <Grid Padding="10">
+                            <Frame HeightRequest="125"
+                               Padding="0">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PokemonViewModels}}, Path=GoToDetailsCommand}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="0"
+                                  ColumnDefinitions="125,*">
+                                    <Image Aspect="AspectFit"
+                                   Source="{Binding img}"
+                                   HeightRequest="125"
+                                   WidthRequest="125"/>
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                     Padding="10"
+                                                     VerticalOptions="Center">
+                                        <Label Text="{Binding name}"
+                                           Style="{StaticResource LargeLabel}"/>
+                                        <Label Text="{Binding num}"
+                                           Style="{StaticResource MediumLabel}"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Button Text="Get Pokemons"
+                Style="{StaticResource ButtonOutline}"
+                Command="{Binding GetPokemonCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="8"/>
+   
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+
+    </Grid>
+
+</ContentPage>

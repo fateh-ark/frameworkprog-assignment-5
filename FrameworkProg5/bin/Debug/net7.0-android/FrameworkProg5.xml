@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FrameworkProg5</name>
+    </assembly>
+    <members>
+        <member name="P:FrameworkProg5.ViewModel.BaseViewModel.IsBusy">
+            <inheritdoc cref="F:FrameworkProg5.ViewModel.BaseViewModel.isBusy"/>
+        </member>
+        <member name="P:FrameworkProg5.ViewModel.BaseViewModel.Title">
+            <inheritdoc cref="F:FrameworkProg5.ViewModel.BaseViewModel.title"/>
+        </member>
+        <member name="P:FrameworkProg5.ViewModel.PokemonDetailsViewModel.Pokemon">
+            <inheritdoc cref="F:FrameworkProg5.ViewModel.PokemonDetailsViewModel.pokemon"/>
+        </member>
+        <member name="P:FrameworkProg5.ViewModel.PokemonViewModels.IsRefreshing">
+            <inheritdoc cref="F:FrameworkProg5.ViewModel.PokemonViewModels.isRefreshing"/>
+        </member>
+        <member name="F:FrameworkProg5.ViewModel.PokemonViewModels.goToDetailsCommand">
+            <summary>The backing field for <see cref="P:FrameworkProg5.ViewModel.PokemonViewModels.GoToDetailsCommand"/>.</summary>
+        </member>
+        <member name="P:FrameworkProg5.ViewModel.PokemonViewModels.GoToDetailsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:FrameworkProg5.ViewModel.PokemonViewModels.GoToDetailsAsync(FrameworkProg5.Model.Pokemon)"/>.</summary>
+        </member>
+        <member name="F:FrameworkProg5.ViewModel.PokemonViewModels.getPokemonCommand">
+            <summary>The backing field for <see cref="P:FrameworkProg5.ViewModel.PokemonViewModels.GetPokemonCommand"/>.</summary>
+        </member>
+        <member name="P:FrameworkProg5.ViewModel.PokemonViewModels.GetPokemonCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FrameworkProg5.ViewModel.PokemonViewModels.GetPokemonAsync"/>.</summary>
+        </member>
+    </members>
+</doc>
